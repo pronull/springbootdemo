@@ -22,6 +22,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @RequestMapping("/hello")
+    public String index() {
+        return "Hello World";
+    }
 
     @GetMapping("/infos")
     @ResponseBody

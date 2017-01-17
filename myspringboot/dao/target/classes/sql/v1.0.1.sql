@@ -14,3 +14,6 @@ CREATE TABLE `user` (
   `email` varchar(36) DEFAULT  '' COMMENT 'email',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='测试'
+
+
+INSERT INTO `user`( `name` , age , height , weight , telephone , qq , create_time , user_account , user_password , email) VALUES( '王老吉' , 10 , 1.23 , 1.25 , '182223333' , 231456789 , CURDATE() , 'admin' , '123456' , '123@qq.com')
