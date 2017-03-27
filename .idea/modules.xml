@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/dao.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/front.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/front.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/myspringboot.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/myspringboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/pc.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/pc.iml" />
+    </modules>
+  </component>
+</project>

@@ -17,3 +17,10 @@ CREATE TABLE `user` (
 
 
 INSERT INTO `user`( `name` , age , height , weight , telephone , qq , create_time , user_account , user_password , email) VALUES( '王老吉' , 10 , 1.23 , 1.25 , '182223333' , 231456789 , CURDATE() , 'admin' , '123456' , '123@qq.com')
+
+
+drop table if exists city;
+
+create table city (id int primary key auto_increment, name varchar, state varchar, country varchar);
+
+insert into city (name, state, country) values ('San Francisco', 'CA', 'US');
