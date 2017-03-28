@@ -1,5 +1,6 @@
 package com.github.controller;
 
+
 import com.github.entity.City;
 import com.github.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class CityController {
     @Autowired
     private CityService cityService;
     @GetMapping("/city")
-   City findCity(){
+    City findCity(){
         System.out.println();
        return cityService.getInfo();
    }
