@@ -6,7 +6,7 @@ package com.github.vo.resp;
 public class Resp<T> {
     private T data;
 
-    private static  boolean success = false;
+    private  boolean success = false;
 
     public  static <H> Resp<H> success(H data){
         Resp<H> resp = new Resp<H>();
@@ -15,12 +15,12 @@ public class Resp<T> {
         return resp;
     }
 
-    public static boolean isSuccess() {
+    public  boolean isSuccess() {
         return success;
     }
 
-    public static void setSuccess(boolean success) {
-        Resp.success = success;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
     public T getData() {

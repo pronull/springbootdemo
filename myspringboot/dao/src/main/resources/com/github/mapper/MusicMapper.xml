@@ -119,4 +119,11 @@
       music_file_address = #{musicFileAddress,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="findMusicInfoByPage">
+    SELECT
+      <include refid="Base_Column_List"/>
+    FROM music
+  </select>
+
 </mapper>
