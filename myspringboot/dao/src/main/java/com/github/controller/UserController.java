@@ -21,7 +21,7 @@ public class UserController {
 
     @GetMapping("v1/user/find/{account}")
     @ResponseBody
-    public Resp<User> findUserByAccount(@PathVariable("account")String userAccount){
+    public Resp<User> findUserByAccount(@PathVariable("account") String userAccount) {
         return Resp.success(userService.findUserByAccount(userAccount));
     }
 }

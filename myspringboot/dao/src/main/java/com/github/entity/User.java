@@ -12,16 +12,16 @@ import java.util.Date;
  * @date on 17/1/17.
  */
 public class User {
-     private String name;
-     private int age;
-     private BigDecimal height;
-     private BigDecimal weight;
-     private String telephone;
-     private int qq;
-     private Date createTime;
-     private String userAccount;
-     private String userPassword;
-     private String email;
+    private String name;
+    private int age;
+    private BigDecimal height;
+    private BigDecimal weight;
+    private String telephone;
+    private int qq;
+    private Date createTime;
+    private String userAccount;
+    private String userPassword;
+    private String email;
 
     public String getName() {
         return name;

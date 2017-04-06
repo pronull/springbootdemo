@@ -13,18 +13,19 @@ CREATE TABLE `user` (
   `user_password` varchar(36) DEFAULT '' COMMENT '密码',
   `email` varchar(36) DEFAULT  '' COMMENT 'email',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='测试'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='测试';
 
+drop table if exists `music`;
 CREATE TABLE `music` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `music_id` int(36) DEFAULT 0 COMMENT 'musicId',
+  `music_id` varchar(32) DEFAULT 0 COMMENT 'musicId',
   `music_name` varchar(36) DEFAULT '' COMMENT 'musicName',
   `music_author` varchar(36) DEFAULT '' COMMENT 'author',
   `music_collection` varchar(36) DEFAULT '' COMMENT 'Collection',
   `music_file_address` varchar(512) DEFAULT '' COMMENT 'address',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='music'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='music';
 
-INSERT INTO `user`( `name` , age , height , weight , telephone , qq , create_time , user_account , user_password , email) VALUES( '王老吉' , 10 , 1.23 , 1.25 , '182223333' , 231456789 , CURDATE() , 'admin' , '123456' , '123@qq.com')
+INSERT INTO `user`( `name` , age , height , weight , telephone , qq , create_time , user_account , user_password , email) VALUES( '王老吉' , 10 , 1.23 , 1.25 , '182223333' , 231456789 , CURDATE() , 'admin' , '123456' , '123@qq.com');
 
 

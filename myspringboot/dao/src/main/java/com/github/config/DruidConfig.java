@@ -37,11 +37,11 @@ public class DruidConfig {
         dataSource.setTestOnReturn(false);
         dataSource.setPoolPreparedStatements(true);
         dataSource.setMaxPoolPreparedStatementPerConnectionSize(20);
-       try {
+        try {
             dataSource.setFilters("stat");
         } catch (SQLException e) {
 //           log.error("druid configuration initialization filter", e);
-           System.out.println("sba\n\n\n\n\n\n\n\n\n");
+            System.out.println("sba\n\n\n\n\n\n\n\n\n");
         }
         dataSource.setConnectionProperties("druid.stat.mergeSql=true");
 

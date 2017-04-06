@@ -1,9 +1,8 @@
 package com.github.entity;
 
 public class Music {
-    private Long id;
 
-    private Integer musicId;
+    private String musicId;
 
     private String musicName;
 
@@ -13,19 +12,12 @@ public class Music {
 
     private String musicFileAddress;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getMusicId() {
+    public String getMusicId() {
         return musicId;
     }
 
-    public void setMusicId(Integer musicId) {
+    public void setMusicId(String musicId) {
         this.musicId = musicId;
     }
 

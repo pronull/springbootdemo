@@ -20,20 +20,21 @@ public class AddressController {
 
     @RequestMapping("/test")
     @ResponseBody
-    public String putCache(){
-        addressService.findUser(1l,"wang","yunfei");
+    public String putCache() {
+        addressService.findUser(1l, "wang", "yunfei");
         //addressService.findAddress(1l,"anhui","hefei");
         System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
         return "ok";
     }
+
     @RequestMapping("/test2")
     @ResponseBody
-    public String testCache(){
-        User user = addressService.findUser(1l,"wang","yunfei");
-        Address address =addressService.findAddress(1l,"anhui","hefei");
+    public String testCache() {
+        User user = addressService.findUser(1l, "wang", "yunfei");
+        Address address = addressService.findAddress(1l, "anhui", "hefei");
         System.out.println("我这里没执行查询");
-        System.out.println("user:"+"/"+user.getName()+"/"+user.getAge());
-        System.out.println("address:"+"/"+address.getProvince()+"/"+address.getCity());
+        System.out.println("user:" + "/" + user.getName() + "/" + user.getAge());
+        System.out.println("address:" + "/" + address.getProvince() + "/" + address.getCity());
         return "ok";
     }
 

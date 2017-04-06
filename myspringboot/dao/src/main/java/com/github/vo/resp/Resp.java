@@ -6,16 +6,23 @@ package com.github.vo.resp;
 public class Resp<T> {
     private T data;
 
-    private  boolean success = false;
+    private boolean success = false;
 
-    public  static <H> Resp<H> success(H data){
+    public static <H> Resp<H> success(H data) {
         Resp<H> resp = new Resp<H>();
         resp.setData(data);
         resp.setSuccess(true);
         return resp;
     }
 
-    public  boolean isSuccess() {
+    public static <H> Resp<H> error(H data) {
+        Resp<H> resp = new Resp<H>();
+        resp.setData(data);
+        resp.setSuccess(false);
+        return resp;
+    }
+
+    public boolean isSuccess() {
         return success;
     }
 

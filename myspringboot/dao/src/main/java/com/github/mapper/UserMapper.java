@@ -1,7 +1,6 @@
 package com.github.mapper;
 
 import com.github.entity.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -14,7 +13,10 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserMapper {
     int insert(@Param("user") User user);
+
     int update(@Param("user") User user);
-    int delete(@Param("user") User  user);
+
+    int delete(@Param("user") User user);
+
     User findUserByUserAccount(@Param("userAccount") String userAccount);
 }
