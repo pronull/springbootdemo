@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.mapper.MusicMapper" >
+  <resultMap id="BaseResultMap" type="com.github.entity.Music" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="music_id" property="musicId" jdbcType="INTEGER" />
+    <result column="music_name" property="musicName" jdbcType="VARCHAR" />
+    <result column="music_author" property="musicAuthor" jdbcType="VARCHAR" />
+    <result column="music_collection" property="musicCollection" jdbcType="VARCHAR" />
+    <result column="music_file_address" property="musicFileAddress" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, music_id, music_name, music_author, music_collection, music_file_address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from music
+    where music_id = #{musicId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from music
+    where music_id = #{musicId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.github.entity.Music" >
+    insert into music
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="musicId != null" >
+        music_id,
+      </if>
+      <if test="musicName != null" >
+        music_name,
+      </if>
+      <if test="musicAuthor != null" >
+        music_author,
+      </if>
+      <if test="musicCollection != null" >
+        music_collection,
+      </if>
+      <if test="musicFileAddress != null" >
+        music_file_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="musicId != null" >
+        #{musicId,jdbcType=INTEGER},
+      </if>
+      <if test="musicName != null" >
+        #{musicName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicAuthor != null" >
+        #{musicAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="musicCollection != null" >
+        #{musicCollection,jdbcType=VARCHAR},
+      </if>
+      <if test="musicFileAddress != null" >
+        #{musicFileAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.entity.Music" >
+    update music
+    <set >
+      <if test="musicId != null" >
+        music_id = #{musicId,jdbcType=INTEGER},
+      </if>
+      <if test="musicName != null" >
+        music_name = #{musicName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicAuthor != null" >
+        music_author = #{musicAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="musicCollection != null" >
+        music_collection = #{musicCollection,jdbcType=VARCHAR},
+      </if>
+      <if test="musicFileAddress != null" >
+        music_file_address = #{musicFileAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where music_id = #{musicId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.entity.Music" >
+    update music
+    set music_id = #{musicId,jdbcType=INTEGER},
+      music_name = #{musicName,jdbcType=VARCHAR},
+      music_author = #{musicAuthor,jdbcType=VARCHAR},
+      music_collection = #{musicCollection,jdbcType=VARCHAR},
+      music_file_address = #{musicFileAddress,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findMusicInfoByPage">
+    SELECT
+      <include refid="Base_Column_List"/>
+    FROM music
+  </select>
+
+</mapper>

@@ -15,6 +15,15 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='测试'
 
+CREATE TABLE `music` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `music_id` int(36) DEFAULT 0 COMMENT 'musicId',
+  `music_name` varchar(36) DEFAULT '' COMMENT 'musicName',
+  `music_author` varchar(36) DEFAULT '' COMMENT 'author',
+  `music_collection` varchar(36) DEFAULT '' COMMENT 'Collection',
+  `music_file_address` varchar(512) DEFAULT '' COMMENT 'address',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='music'
 
 INSERT INTO `user`( `name` , age , height , weight , telephone , qq , create_time , user_account , user_password , email) VALUES( '王老吉' , 10 , 1.23 , 1.25 , '182223333' , 231456789 , CURDATE() , 'admin' , '123456' , '123@qq.com')
 
