@@ -4,6 +4,7 @@ import com.github.entity.Address;
 import com.github.entity.User;
 import com.github.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @RequestMapping("/test")
+    @GetMapping("/test")
     @ResponseBody
     public String putCache() {
         addressService.findUser(1l, "wang", "yunfei");
@@ -27,7 +28,7 @@ public class AddressController {
         return "ok";
     }
 
-    @RequestMapping("/test2")
+    @GetMapping("/test2")
     @ResponseBody
     public String testCache() {
         User user = addressService.findUser(1l, "wang", "yunfei");

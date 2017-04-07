@@ -6,10 +6,7 @@ import com.github.service.MusicService;
 import com.github.vo.common.MusicVo;
 import com.github.vo.resp.Resp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,13 +18,13 @@ public class MusicController {
     @Autowired
     private MusicService musicService;
 
-    @RequestMapping("/v1/music/list")
+    @PostMapping("/v1/music/list")
     @ResponseBody
     public Resp<List<Music>> getMusicList(@RequestBody Pageable page) {
         return Resp.success(musicService.getMusicList(page));
     }
 
-    @RequestMapping("/v1/music/save")
+    @PostMapping("/v1/music/save")
     @ResponseBody
     public Resp<String> save(@RequestBody MusicVo vo) {
         int count = musicService.save(vo);
