@@ -1,5 +1,6 @@
 package com.github.controller;
 
+import com.github.annotation.OnPage;
 import com.github.common.Pageable;
 import com.github.entity.Music;
 import com.github.service.MusicService;
@@ -24,6 +25,11 @@ public class MusicController {
         return Resp.success(musicService.getMusicList(page));
     }
 
+    @GetMapping("/v1/music/list/all")
+    @ResponseBody
+    public Resp<List<Music>> getAllMusicList() {
+        return Resp.success(musicService.getMusicListForAll());
+    }
     @PostMapping("/v1/music/save")
     @ResponseBody
     public Resp<String> save(@RequestBody MusicVo vo) {

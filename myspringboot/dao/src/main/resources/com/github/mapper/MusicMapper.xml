@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.github.mapper.MusicMapper" >
   <resultMap id="BaseResultMap" type="com.github.entity.Music" >
-    <id column="id" property="id" jdbcType="BIGINT" />
     <result column="music_id" property="musicId" jdbcType="VARCHAR" />
     <result column="music_name" property="musicName" jdbcType="VARCHAR" />
     <result column="music_author" property="musicAuthor" jdbcType="VARCHAR" />
@@ -39,19 +38,23 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+
+  <sql id="baseResult" >
     id, music_id, music_name, music_author, music_collection, music_file_address
   </sql>
+
   <select id="selectByMusicId" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
+    select
+    <include refid="baseResult" />
     from music
     where music_id = #{musicId,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByMusicId" parameterType="java.lang.String" >
     delete from music
     where music_id = #{musicId,jdbcType=VARCHAR}
   </delete>
+
   <insert id="insertSelective" parameterType="com.github.entity.Music" >
     insert into music
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -89,6 +92,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByMusicIdSelective" parameterType="com.github.entity.Music" >
     update music
     <set >
@@ -112,10 +116,17 @@
   </update>
 
 
-  <select id="findMusicInfoByPage" resultType="com.github.entity.Music">
+  <select id="findMusicInfoByPage" resultMap="BaseResultMap">
     SELECT
-      <include refid="Base_Column_List"/>
+      <include refid="baseResult"/>
     FROM music
+  </select>
+
+  <select id="findMusicInfoForAll" resultMap="BaseResultMap">
+    SELECT
+    *
+    FROM music
+    limit 1
   </select>
 
 </mapper>

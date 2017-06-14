@@ -18,7 +18,7 @@ CREATE TABLE `user` (
 drop table if exists `music`;
 CREATE TABLE `music` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-  `music_id` varchar(32) DEFAULT 0 COMMENT 'musicId',
+  `music_id` varchar(36) DEFAULT 0 COMMENT 'musicId',
   `music_name` varchar(36) DEFAULT '' COMMENT 'musicName',
   `music_author` varchar(36) DEFAULT '' COMMENT 'author',
   `music_collection` varchar(36) DEFAULT '' COMMENT 'Collection',
