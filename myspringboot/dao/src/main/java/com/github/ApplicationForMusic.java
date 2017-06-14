@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan(basePackages = "com.github.mapper")
-public class Test {
+public class ApplicationForMusic {
 
     public static void main(String[] args) {
-        SpringApplication.run(Test.class);
+        SpringApplication.run(ApplicationForMusic.class);
     }
 
 }

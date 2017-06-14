@@ -33,7 +33,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
-
+    //localhost:8080/swagger-ui.html
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")

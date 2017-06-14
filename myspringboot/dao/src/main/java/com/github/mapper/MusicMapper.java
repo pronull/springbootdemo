@@ -16,4 +16,6 @@ public interface MusicMapper {
     int updateByMusicIdSelective(Music record);
 
     List<Music> findMusicInfoByPage(Pageable page);
+
+    List<Music> findMusicInfoForAll();
 }

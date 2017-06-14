@@ -1,5 +1,6 @@
 package com.github.service;
 
+import com.github.annotation.OnPage;
 import com.github.common.Pageable;
 import com.github.entity.Music;
 import com.github.mapper.MusicMapper;
@@ -30,9 +31,20 @@ public class MusicService {
         return musicList;
     }
 
+    public List<Music> getMusicListForAll() {
+        List<Music> musicList = musicMapper.findMusicInfoForAll();
+        if (musicList.isEmpty()) {
+            throw new RuntimeException("没查到数据");
+        }
+        return musicList;
+    }
+
     public int save(MusicVo vo) {
         Music newMusic = new Music();
-        BeanUtils.copyProperties(newMusic, newMusic);
+        newMusic.setMusicAuthor(vo.getMusicAuthor());
+        newMusic.setMusicCollection(vo.getMusicCollection());
+        newMusic.setMusicFileAddress(vo.getMusicFileAddress());
+        newMusic.setMusicName(vo.getMusicName());
         newMusic.setMusicId(UUID.randomUUID().toString());
         Music oldMusic = musicMapper.selectByMusicId(newMusic.getMusicId());
         if (!Objects.isNull(oldMusic)) {
