@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.cors.CorsUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,13 +18,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+
         http.authorizeRequests()
+                .antMatchers("/*").permitAll()
+                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll() //设置跨域
                 .antMatchers("/css/**", "/index").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .and()
-                .formLogin().loginPage("/login").permitAll().failureUrl("/login-error");
+                .and().formLogin().loginPage("/login").permitAll().failureUrl("/login-error")
+                .and().csrf().disable();
     }
 
     @Autowired

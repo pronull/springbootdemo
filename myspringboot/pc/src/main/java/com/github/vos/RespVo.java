@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by qwe on 2017/7/23.
  */
 @Data
-public class RespVo<T> implements Serializable{
+public class RespVo<T> implements Serializable {
 
     private T content;
 

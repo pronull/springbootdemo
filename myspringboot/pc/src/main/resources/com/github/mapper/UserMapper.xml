@@ -76,10 +76,11 @@
     </select>
 
     <select id="findUserByAccountAndPassword" resultMap="baseMap">
-      select <include refid="columns"/>
-      from `user`
-      where user_account = #{account}
-      and user_password = #{password}
+        select
+        <include refid="columns"/>
+        from `user`
+        where user_account = #{account}
+        and user_password = #{password}
     </select>
 
 </mapper>

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by qwe on 2017/7/23.
  */
 @Data
-public class UserVo implements Serializable{
+public class UserVo implements Serializable {
     private String userId;
     private String userName;
     private String account;

@@ -37,7 +37,7 @@ public class UserService {
         userMapper.insert(newUser);
     }
 
-    public User findUserByAccountAndPassword(String account,String password) {
-        return userMapper.findUserByAccountAndPassword(account,password);
+    public User findUserByAccountAndPassword(String account, String password) {
+        return userMapper.findUserByAccountAndPassword(account, password);
     }
 }
