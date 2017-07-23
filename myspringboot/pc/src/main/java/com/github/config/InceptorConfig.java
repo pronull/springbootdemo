@@ -1,0 +1,33 @@
+package com.github.config;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Created by qwe on 2017/7/23.
+ */
+@Component
+public class InceptorConfig implements HandlerInterceptor {
+    // preHandle()方法在业务处理器处理请求之前被调用
+    @Override
+    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+        return false;
+    }
+
+    // postHandle()方法在业务处理器处理请求之后被调用
+    @Override
+    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+
+    }
+
+    // afterCompletion()方法在DispatcherServlet完全处理完请求后被调用
+    @Override
+    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
+        httpServletResponse.setHeader("Access-Control-Allow-Origin","localhost");
+        httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
+    }
+}

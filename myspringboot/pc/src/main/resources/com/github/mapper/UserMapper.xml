@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.mapper.UserMapper">
+
+    <resultMap id="baseMap" type="com.github.entity.User">
+        <result column="record_id" property="recordId"></result>
+        <result column="name" property="name"></result>
+        <result column="user_account" property="userAccount"></result>
+        <result column="user_password" property="userPassword"></result>
+        <result column="email" property="email"></result>
+        <result column="create_time" property="createTime"></result>
+    </resultMap>
+    <sql id="columns">
+        record_id,`name`,user_account,user_password,email,create_time
+    </sql>
+
+    <insert id="insert">
+        insert into `user`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="recordId != null">
+                record_id,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="userAccount != null">
+                user_account,
+            </if>
+            <if test="userPassword != null">
+                user_password,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="recordId != null">
+                #{recordId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="userAccount != null">
+                #{userAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="userPassword != null">
+                #{userPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update">
+        UPDATE `user`
+        <set>
+            <if test="name !=null">
+                `name` = #{name},
+            </if>
+            <if test="@org.springframework.util.StringUtils.hasText(userPassword)">
+                user_password = #{userPassword}
+            </if>
+            <if test="email !=null">
+                `email` = #{email},
+            </if>
+        </set>
+        where user_account = #{user.userAccount}
+    </update>
+
+
+    <select id="findUserByAccount" resultMap="baseMap">
+        select
+        <include refid="columns"/>
+        from `user`
+        where user_account = #{userAccount}
+    </select>
+
+    <select id="findUserByAccountAndPassword" resultMap="baseMap">
+      select <include refid="columns"/>
+      from `user`
+      where user_account = #{account}
+      and user_password = #{password}
+    </select>
+
+</mapper>

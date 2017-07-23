@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletRequest;
  * Created by qwe on 2017/7/15.
  */
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter implements RequestMatcher{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter implements RequestMatcher {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/css/**", "/index").permitAll()
                 .antMatchers("/user/**").hasRole("USER")

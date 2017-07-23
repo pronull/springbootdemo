@@ -1,5 +1,6 @@
 package com.github;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author by weiwb
  * @date on 17/1/17.
  */
+@MapperScan(basePackages = "com.github.mapper")
 @SpringBootApplication
 public class ApplicationStart {
 
