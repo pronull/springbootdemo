@@ -8,7 +8,7 @@
 .idea/
 .idea/jsLibraryMappings.xml
 *.idea
-.iml
+*.iml
 # Sensitive or high-churn files:
 .idea/dataSources.ids
 .idea/dataSources.xml

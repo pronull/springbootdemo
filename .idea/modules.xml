@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/dao.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/front.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/front.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/myspringboot.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/myspringboot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../springbootdemoweb/pc.iml" filepath="$PROJECT_DIR$/../springbootdemoweb/pc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myspringboot/dao/dao.iml" filepath="$PROJECT_DIR$/myspringboot/dao/dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myspringboot/front/front.iml" filepath="$PROJECT_DIR$/myspringboot/front/front.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myspringboot/myspringboot.iml" filepath="$PROJECT_DIR$/myspringboot/myspringboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myspringboot/pc/pc.iml" filepath="$PROJECT_DIR$/myspringboot/pc/pc.iml" />
     </modules>
   </component>
 </project>
