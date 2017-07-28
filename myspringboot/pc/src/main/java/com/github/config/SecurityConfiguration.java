@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by qwe on 2017/7/15.
  */
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter implements RequestMatcher {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -25,7 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .antMatchers("/css/**", "/index").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .and().formLogin().loginPage("/login").permitAll().failureUrl("/login-error")
+                .and().rememberMe().tokenValiditySeconds(1209600)
+                .and().cors()
+                .and().formLogin().loginPage("/#/login").permitAll().defaultSuccessUrl("/user/index").successForwardUrl("/user/index").failureUrl("/login-error")
                 .and().csrf().disable();
     }
 
@@ -35,11 +37,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .withUser("1").password("1").roles("USER");
         auth.inMemoryAuthentication()
                 .withUser("2").password("2").roles("ADMIN");
-    }
-
-    @Override
-    public boolean matches(HttpServletRequest httpServletRequest) {
-        return false;
     }
 
 }

@@ -34,10 +34,10 @@ public class RegistController {
     public RespVo<String> signUp(@RequestBody UserVo userVo) {
         //已存在的不能再注册
         Assert.notNull(userVo, "请求参数不能为空");
-        Assert.hasText(userVo.getUserName(), "用户名不能为空");
+        Assert.hasText(userVo.getUsername(), "用户名不能为空");
         Assert.hasText(userVo.getAccount(), "账户不能为空");
         Assert.hasText(userVo.getPassword(), "密码不能为空");
-        User user = userService.findUserByUserName(userVo.getUserName());
+        User user = userService.findUserByUserName(userVo.getUsername());
         Assert.isNull(user, "该账户已被注册");
         User newUser = new User();
         convert(userVo, newUser);
@@ -46,7 +46,7 @@ public class RegistController {
     }
 
     private void convert(UserVo vo, User entity) {
-        entity.setName(vo.getUserName());
+        entity.setName(vo.getUsername());
         entity.setUserPassword(vo.getPassword());
         entity.setEmail(vo.getEmail());
         entity.setUserAccount(vo.getAccount());

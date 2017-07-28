@@ -22,18 +22,17 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
-    public RespVo<String> login(@RequestBody UserVo userVo) {
+    public RespVo<String> login(UserVo userVo) {
         Assert.notNull(userVo, "请求参数不能为空");
-        Assert.hasText(userVo.getAccount(), "账户不能为空");
+        Assert.hasText(userVo.getUsername(), "账户不能为空");
         Assert.hasText(userVo.getPassword(), "密码不能为空");
-        User accountAndPassword = userService.findUserByAccountAndPassword(userVo.getAccount(), userVo.getPassword());
+        User accountAndPassword = userService.findUserByAccountAndPassword(userVo.getUsername(),userVo.getPassword());
         Assert.notNull(accountAndPassword, "账户名或密码错误");
         return RespVo.success("登录成功");
     }
 
     @RequestMapping("/login-error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
+    public String loginError() {
         return "login";
     }
 
