@@ -5,9 +5,11 @@ import com.github.entity.User;
 import com.github.service.UserService;
 import com.github.vos.RespVo;
 import com.github.vos.UserVo;
+import com.google.common.base.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+
 import org.springframework.util.Assert;
+
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -22,13 +24,15 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
-    public RespVo<String> login(UserVo userVo) {
+    public RespVo<UserVo> login(UserVo userVo) {
         Assert.notNull(userVo, "请求参数不能为空");
         Assert.hasText(userVo.getUsername(), "账户不能为空");
         Assert.hasText(userVo.getPassword(), "密码不能为空");
-        User accountAndPassword = userService.findUserByAccountAndPassword(userVo.getUsername(),userVo.getPassword());
-        Assert.notNull(accountAndPassword, "账户名或密码错误");
-        return RespVo.success("登录成功");
+        User user = userService.findUserByAccountAndPassword(userVo.getUsername(),userVo.getPassword());
+        Assert.notNull(user, "账户名或密码错误");
+        UserVo resp = new UserVo();
+        resp.setUsername(user.getName());
+        return RespVo.success(resp);
     }
 
     @RequestMapping("/login-error")

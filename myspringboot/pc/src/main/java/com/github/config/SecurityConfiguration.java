@@ -19,15 +19,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        //默认form登录的地址是/manage/j_spring_security_check,此时会调用UsernamePasswordAuthenticationFilter的attemptAuthentication方法进行认证
         http.authorizeRequests()
                 .antMatchers("/*").permitAll()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll() //设置跨域
-                .antMatchers("/css/**", "/index").permitAll()
-                .antMatchers("/user/**").hasRole("USER")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER").requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+//                .antMatchers("/admin/**").hasRole("ADMIN").requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .and().rememberMe().tokenValiditySeconds(1209600)
-                .and().cors()
-                .and().formLogin().loginPage("/#/login").permitAll().defaultSuccessUrl("/user/index").successForwardUrl("/user/index").failureUrl("/login-error")
+                .and().formLogin().loginPage("/#/login").loginProcessingUrl("/manage/j_spring_security_check").permitAll()
                 .and().csrf().disable();
     }
 
