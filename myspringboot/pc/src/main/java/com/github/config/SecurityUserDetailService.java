@@ -38,6 +38,10 @@ public class SecurityUserDetailService implements UserDetailsService{
         return new SecurityUserDetails(user);
     }
 
+
+    /**
+     * 用户名/权限校验
+     */
     class SecurityUserDetails implements UserDetails{
         private User user;
 
