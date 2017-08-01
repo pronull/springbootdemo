@@ -2,6 +2,7 @@ package com.github.controller;
 
 import com.github.vos.RespVo;
 import io.swagger.annotations.Api;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Api("用户接口")
 public class UserController {
 
+//
+//    @GetMapping("/index")
+//    public RespVo<String> getIndex(){
+//
+//        return RespVo.success("user/index");
+//    }
 
-    @GetMapping("/index")
-    public RespVo<String> getIndex(){
-
-        return RespVo.success("index");
-    }
 }
