@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.mapper.UserRoleRelationMapper">
+
+    <resultMap id="baseMap" type="com.github.entity.UserRoleRelation">
+        <result column="user_record_id" property="userRecordId"></result>
+        <result column="role_record_id" property="roleRecordId"></result>
+    </resultMap>
+    <sql id="columns">
+        user_record_id,role_record_id
+    </sql>
+
+    <insert id="insert">
+        insert into `user_role_relation`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userRecordId != null">
+                user_record_id,
+            </if>
+            <if test="roleRecordId != null">
+                role_record_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userRecordId != null">
+                #{userRecordId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleRecordId != null">
+                #{roleRecordId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update">
+        UPDATE `user_role_relation`
+        <set>
+            <if test="name !=null">
+                `name` = #{name},
+            </if>
+            <if test="@org.springframework.util.StringUtils.hasText(code)">
+                code = #{code}
+            </if>
+        </set>
+        where record_id = #{recordId}
+    </update>
+
+
+    <select id="findByUserRecordId" resultMap="baseMap">
+        select
+        <include refid="columns"/>
+        from `user_role_relation`
+        where user_record_id = #{userRecordId}
+    </select>
+
+</mapper>

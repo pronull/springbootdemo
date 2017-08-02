@@ -1,7 +1,11 @@
 package com.github.config;
 
+import com.github.entity.Role;
 import com.github.entity.User;
+import com.github.entity.UserRoleRelation;
+import com.github.mapper.RoleMapper;
 import com.github.mapper.UserMapper;
+import com.github.mapper.UserRoleRelationMapper;
 import com.github.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,6 +33,12 @@ public class SecurityUserDetailService implements UserDetailsService{
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserRoleRelationMapper userRoleRelationMapper;
+
+    @Autowired
+    private RoleMapper roleMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userMapper.findUserByAccount(username);
@@ -52,8 +62,12 @@ public class SecurityUserDetailService implements UserDetailsService{
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
             List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-            //用户拥有的所有权限
-            grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
+            List<UserRoleRelation> relations = userRoleRelationMapper.findByUserRecordId(this.user.getRecordId());
+            relations.forEach(relation->{
+                String  roleRecordId = relation.getRoleRecordId();
+                Role role =  roleMapper.findByRecordId(roleRecordId);
+                grantedAuthorityList.add(new SimpleGrantedAuthority(role.getCode()));
+            });
             return grantedAuthorityList;
         }
 
