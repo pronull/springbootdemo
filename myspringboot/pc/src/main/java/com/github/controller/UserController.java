@@ -1,12 +1,14 @@
 package com.github.controller;
 
+import com.github.vos.RegistVo;
 import com.github.vos.RespVo;
+import com.github.vos.UserVo;
 import io.swagger.annotations.Api;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Copyright (C), 2016-2017, 深圳云集智造系统技术有限公司
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("user")
+@RequestMapping("unit")
 @Api("用户接口")
 public class UserController {
 

@@ -1,11 +1,8 @@
 package com.github.controller;
 
-import com.github.entity.Address;
-import com.github.entity.User;
 import com.github.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,11 +28,11 @@ public class AddressController {
     @GetMapping("/test2")
     @ResponseBody
     public String testCache() {
-        User user = addressService.findUser(1l, "wang", "yunfei");
-        Address address = addressService.findAddress(1l, "anhui", "hefei");
-        System.out.println("我这里没执行查询");
-        System.out.println("user:" + "/" + user.getName() + "/" + user.getAge());
-        System.out.println("address:" + "/" + address.getProvince() + "/" + address.getCity());
+//        User user = addressService.findUser(1l, "wang", "yunfei");
+//        Address address = addressService.findAddress(1l, "anhui", "hefei");
+//        System.out.println("我这里没执行查询");
+//        System.out.println("user:" + "/" + user.getName() + "/" + user.getAge());
+//        System.out.println("address:" + "/" + address.getProvince() + "/" + address.getCity());
         return "ok";
     }
 

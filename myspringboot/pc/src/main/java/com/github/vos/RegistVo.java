@@ -1,6 +1,10 @@
 package com.github.vos;
 
 import lombok.Data;
+import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
 
 /**
  * Copyright (C), 2016-2017, 深圳云集智造系统技术有限公司
@@ -16,4 +20,5 @@ public class RegistVo {
     private String account;
     private String password;
     private String email;
+
 }

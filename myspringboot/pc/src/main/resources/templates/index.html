@@ -3,6 +3,10 @@
 <head>
     <title>Hello Spring Security</title>
     <meta charset="utf-8" />
+    <script
+            src="http://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
